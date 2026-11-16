@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="hi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#174ea6">
+<title>My Personal Study Library</title>
+<style>
+:root{font-family:system-ui,-apple-system,"Noto Sans Devanagari",sans-serif;color:#172033;background:#f3f6fb}
+*{box-sizing:border-box}body{margin:0}header{background:#174ea6;color:white;padding:22px 16px}
+header h1{font-size:22px;margin:0 0 6px}header p{margin:0;font-size:14px;opacity:.95}
+main{max-width:850px;margin:18px auto;padding:0 12px}
+nav{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+button,.tab{border:0;border-radius:10px;padding:11px 14px;background:#e2e9f5;color:#172033;font-size:14px;font-weight:600;cursor:pointer}
+.tab.active,button.primary{background:#174ea6;color:white}
+.panel{background:white;border-radius:14px;padding:16px;margin:12px 0;box-shadow:0 2px 10px #13294b12}
+h2{font-size:19px;margin:0 0 12px}h3{font-size:16px;margin:12px 0 6px}
+input,textarea,select{width:100%;padding:11px;border:1px solid #cbd5e1;border-radius:9px;margin:6px 0 12px;font:inherit;background:white}
+textarea{min-height:110px;resize:vertical}
+label{font-weight:600;font-size:14px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.item{border:1px solid #e1e7f0;border-radius:10px;padding:12px;margin:9px 0}
+.item strong{display:block;margin-bottom:4px}.muted{color:#64748b;font-size:13px}
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:9px}
+.small{padding:7px 10px;font-size:13px}.danger{background:#fee2e2;color:#991b1b}
+.hidden{display:none}.empty{color:#64748b;text-align:center;padding:20px}
+.notice{background:#fff7d6;border-radius:10px;padding:11px;font-size:13px;line-height:1.5}
+a{color:#174ea6;word-break:break-word}
+@media(max-width:560px){.row{grid-template-columns:1fr}header h1{font-size:20px}}
+</style>
+</head>
+<body>
+<header><h1>📚 My Personal Study Library</h1><p>अपने PDF, Chapters और Notes को क्रम से व्यवस्थित करें</p></header>
+<main>
+<nav>
+<button class="tab active" data-tab="pdf">📄 PDF Library</button>
+<button class="tab" data-tab="notes">📝 Notes</button>
+<button class="tab" data-tab="help">ℹ️ Help</button>
+</nav>
+
+<section id="pdf" class="panel">
+<h2>PDF जोड़ें</h2>
+<label>विषय / किताब का नाम</label><input id="subject" placeholder="जैसे: Biology या Arabic">
+<div class="row">
+<div><label>Chapter नंबर</label><input id="chapter" placeholder="जैसे: 01"></div>
+<div><label>Chapter का नाम</label><input id="chapterName" placeholder="जैसे: Introduction"></div>
+</div>
+<label>PDF फ़ाइल चुनें</label><input id="pdfFile" type="file" accept="application/pdf">
+<button class="primary" id="addPdf">PDF सेव करें</button>
+<p class="muted">PDF इसी ब्राउज़र में आपके डिवाइस पर सेव होगी। पहली बार सेव करने के बाद इंटरनेट की जरूरत नहीं।</p>
+</section>
+
+<section id="pdfList" class="panel">
+<h2>मेरी PDF Library</h2>
+<input id="pdfSearch" placeholder="PDF या Chapter खोजें...">
+<div id="pdfItems" class="empty">अभी कोई PDF नहीं जोड़ी गई है।</div>
+</section>
+
+<section id="notes" class="panel hidden">
+<h2>अलग Notes Section</h2>
+<label>विषय / किताब</label><input id="noteSubject" placeholder="जैसे: Biology">
+<label>Note का शीर्षक</label><input id="noteTitle" placeholder="जैसे: Chapter 1 Important Points">
+<label>Note लिखें</label><textarea id="noteText" placeholder="अपने नोट्स यहाँ लिखें..."></textarea>
+<button class="primary" id="saveNote">Note सेव करें</button>
+<h3>मेरे Notes</h3><input id="noteSearch" placeholder="Notes खोजें...">
+<div id="noteItems" class="empty">अभी कोई Note नहीं है।</div>
+</section>
+
+<section id="help" class="panel hidden">
+<h2>इसे इस्तेमाल कैसे करें?</h2>
+<ol>
+<li>PDF Library में विषय, Chapter नंबर और नाम लिखें।</li>
+<li>PDF फ़ाइल चुनकर “PDF सेव करें” दबाएँ।</li>
+<li>Notes टैब में अलग से अपने नोट्स सेव करें।</li>
+<li>PDF खोलने, डाउनलोड करने या हटाने के लिए उसके नीचे दिए बटन इस्तेमाल करें।</li>
+</ol>
+<div class="notice"><b>जरूरी बात:</b> यह वेबसाइट PDF को आपके इसी ब्राउज़र/डिवाइस में रखती है। ब्राउज़र का data या site storage साफ़ करने पर सेव की गई PDF और Notes मिट सकते हैं। इसलिए जरूरी PDF की मूल कॉपी भी सुरक्षित रखें। दूसरे मोबाइल या ब्राउज़र में डेटा अपने-आप नहीं आएगा।</div>
+<p class="muted">यह एक शुरुआती ऑफलाइन लाइब्रेरी है। GitHub पर अपलोड करने के बाद भी PDF फाइलें निजी रूप से आपके ब्राउज़र में ही रहेंगी; GitHub पर अपलोड नहीं होंगी।</p>
+</section>
+</main>
+<script>
+const DB_NAME='my-personal-study-library', STORE='pdfs';
+let db;
+function openDB(){return new Promise((resolve,reject)=>{const r=indexedDB.open(DB_NAME,1);r.onupgradeneeded=()=>r.result.createObjectStore(STORE,{keyPath:'id',autoIncrement:true});r.onsuccess=()=>{db=r.result;resolve(db)};r.onerror=()=>reject(r.error)})}
+function allPDFs(){return new Promise((resolve,reject)=>{const r=db.transaction(STORE).objectStore(STORE).getAll();r.onsuccess=()=>resolve(r.result);r.onerror=()=>reject(r.error)})}
+function savePDF(data){return new Promise((resolve,reject)=>{const r=db.transaction(STORE,'readwrite').objectStore(STORE).add(data);r.onsuccess=()=>resolve(r.result);r.onerror=()=>reject(r.error)})}
+function deletePDF(id){return new Promise((resolve,reject)=>{const r=db.transaction(STORE,'readwrite').objectStore(STORE).delete(id);r.onsuccess=resolve;r.onerror=()=>reject(r.error)})}
+function esc(s){return String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+async function renderPDFs(){const q=document.getElementById('pdfSearch').value.toLowerCase();const items=(await allPDFs()).filter(x=>(x.subject+' '+x.chapter+' '+x.chapterName+' '+x.name).toLowerCase().includes(q)).sort((a,b)=>a.subject.localeCompare(b.subject)||String(a.chapter).localeCompare(String(b.chapter),undefined,{numeric:true}));const box=document.getElementById('pdfItems');if(!items.length){box.className='empty';box.textContent='अभी कोई PDF नहीं मिली।';return}box.className='';box.innerHTML=items.map(x=>`<div class="item"><strong>${esc(x.subject)} — Chapter ${esc(x.chapter)}: ${esc(x.chapterName)}</strong><div class="muted">${esc(x.name)} · ${(x.file.size/1024/1024).toFixed(2)} MB</div><div class="actions"><button class="small primary" data-open="${x.id}">PDF खोलें</button><button class="small" data-download="${x.id}">डाउनलोड</button><button class="small danger" data-delete="${x.id}">हटाएँ</button></div></div>`).join('');}
+document.getElementById('addPdf').onclick=async()=>{const subject=document.getElementById('subject').value.trim(),chapter=document.getElementById('chapter').value.trim(),chapterName=document.getElementById('chapterName').value.trim(),file=document.getElementById('pdfFile').files[0];if(!subject||!chapter||!file){alert('कृपया विषय, Chapter नंबर और PDF फ़ाइल चुनें।');return}if(file.type!=='application/pdf'&&!file.name.toLowerCase().endsWith('.pdf')){alert('कृपया PDF फ़ाइल चुनें।');return}await savePDF({subject,chapter,chapterName,name:file.name,file,added:Date.now()});document.getElementById('subject').value='';document.getElementById('chapter').value='';document.getElementById('chapterName').value='';document.getElementById('pdfFile').value='';await renderPDFs();alert('PDF सेव हो गई!')};
+document.getElementById('pdfItems').onclick=async e=>{const b=e.target.closest('button');if(!b)return;const id=Number(b.dataset.open||b.dataset.download||b.dataset.delete);if(!id)return;const x=(await allPDFs()).find(p=>p.id===id);if(b.dataset.delete){if(confirm('क्या इस PDF को हटाना चाहते हैं?')){await deletePDF(id);renderPDFs()}return}const url=URL.createObjectURL(x.file);if(b.dataset.open)window.open(url,'_blank');else{const a=document.createElement('a');a.href=url;a.download=x.name;a.click()}setTimeout(()=>URL.revokeObjectURL(url),60000)};
+document.getElementById('pdfSearch').oninput=renderPDFs;
+const NOTES_KEY='mpl_notes_v1';function getNotes(){try{return JSON.parse(localStorage.getItem(NOTES_KEY)||'[]')}catch{return []}}
+function renderNotes(){const q=document.getElementById('noteSearch').value.toLowerCase(),items=getNotes().filter(n=>(n.subject+' '+n.title+' '+n.text).toLowerCase().includes(q));const box=document.getElementById('noteItems');if(!items.length){box.className='empty';box.textContent='अभी कोई Note नहीं मिला।';return}box.className='';box.innerHTML=items.map(n=>`<div class="item"><strong>${esc(n.subject)} — ${esc(n.title)}</strong><div style="white-space:pre-wrap">${esc(n.text)}</div><div class="actions"><button class="small danger" data-note-delete="${n.id}">हटाएँ</button></div></div>`).join('')}
+document.getElementById('saveNote').onclick=()=>{const subject=document.getElementById('noteSubject').value.trim(),title=document.getElementById('noteTitle').value.trim(),text=document.getElementById('noteText').value.trim();if(!title||!text){alert('कृपया Note का शीर्षक और Note लिखें।');return}const notes=getNotes();notes.unshift({id:Date.now(),subject,title,text});localStorage.setItem(NOTES_KEY,JSON.stringify(notes));document.getElementById('noteTitle').value='';document.getElementById('noteText').value='';renderNotes();alert('Note सेव हो गया!')};
+document.getElementById('noteItems').onclick=e=>{const b=e.target.closest('button');if(!b)return;localStorage.setItem(NOTES_KEY,JSON.stringify(getNotes().filter(n=>n.id!==Number(b.dataset.noteDelete))));renderNotes()};
+document.getElementById('noteSearch').oninput=renderNotes;
+document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('active',x===b));['pdf','notes','help'].forEach(id=>document.getElementById(id).classList.toggle('hidden',id!==b.dataset.tab));document.getElementById('pdfList').classList.toggle('hidden',b.dataset.tab!=='pdf')});
+openDB().then(()=>{renderPDFs();renderNotes()}).catch(()=>alert('इस ब्राउज़र में लोकल स्टोरेज उपलब्ध नहीं है। कृपया Chrome में खोलें।'));
+</script>
+</body></html>
